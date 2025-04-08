@@ -1,0 +1,308 @@
+/* base styles */
+:root {
+    --primary-color: #1db954; /* sportify green as primary */
+    --dark-color:#191414; /* sportify black */
+    --light-color:#ffffff;
+    --secondary-color: #535353;
+    --accent-color: #ff5500;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: var(--dark-color);
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Header Styles */
+.main-haeder {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+.main-nav a {
+    color: var(--light-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s;
+}
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+/* Hero Section */
+#hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url('images/IMG-20250407-WA0007.jpg') center/cover no-repeat;
+    color: var(--light-color);
+    text-align: center;
+    padding: 5rem 0;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+#hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+/* Beat-Grid */
+.beat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.beat-card {
+    background: var(--light-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+.beat-card :hover {
+    transform: translateY(-5px);
+}
+.beat-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.beat-info {
+    padding: 1rem;
+}
+.beat-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+.btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.6rem 1.3rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.3s;
+}
+.btn :hover{
+    opacity: 0.9;
+}
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal-content {
+    background-color: var(--light-color);
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+/* Responsive Design */
+@media (max-width:768px) {
+    .beat-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    #hero h2 {
+        font-size: 2rem;
+    }
+}
+/* Payment Modal Styles */
+#paymentSummary {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+#paymentSummary h4 {
+    margin-bottom: 0.5rem;
+}
+
+.payment-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.payment-total {
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Stripe Element Styles */
+.StripeElement {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+
+.StripeElement--focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.StripeElement--invalid {
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}
+
+/* Payment Processing States */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: var(--light-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+#payment-message {
+    margin-top: 1rem;
+    color: #fa755a;
+    font-size: 0.9rem;
+}
+/* Licenses Section */
+.license-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.license-card {
+    background: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.license-card:hover {
+    transform: translateY(-5px);
+}
+
+.license-card .price {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+}
+
+.license-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.license-card li {
+    margin: 0.5rem 0;
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.about-img {
+    width: 200px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem
+
+}
+audio {
+    width: 300px;
+    height: 40px;
+    margin: 20px;
+    background-color: #f1f3f4;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  /* WebKit browsers (Chrome, Safari) */
+  audio::-webkit-media-controls-panel {
+    background-color: #f1f3f4;
+    border-radius: 20px;
+  }
+  
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-mute-button {
+    background-color: #4285f4;
+    border-radius: 50%;
+  }
+  
